@@ -7,7 +7,7 @@ TYPE=$1
 C_NAME=$2
 NUM=$3
 
-#. /app/zabbix/script/fun_check_stat_file.sh
+. /app/zabbix/script/fun_check_stat_file.sh
 bon_file="/app/zabbix/var/BlockOutNum.stats"
 
 is_process() {
@@ -18,11 +18,11 @@ is_process() {
 
 is_process || { echo "produce.sh没有运行，请先输入nohup sh /app/zabbix/script/produce.sh >> /app/zabbix/var/BlockOutNum.stats &命令运行监本。"; exit 1; }
 
-#CHECK_STAT_FILE_FLAG=$(fun_check_stat_file ${bon_file} 120)
+CHECK_STAT_FILE_FLAG=$(fun_check_stat_file ${bon_file} 120)
 
-#if [ ${CHECK_STAT_FILE_FLAG} -ne 1 ] ;then
-#    exit;
-#fi;
+if [ ${CHECK_STAT_FILE_FLAG} -ne 1 ] ;then
+    exit;
+fi;
 
 is_rownum() {
     rownum=$(cat ${bon_file} | wc -l)

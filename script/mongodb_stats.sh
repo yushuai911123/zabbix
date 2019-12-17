@@ -1,7 +1,6 @@
 #!/bin/bash
 #usage:
 #sh mongodb_stats.sh <METRIC> <METHOD> <PORT>
-#source ~/.bash_profile
 
 . /app/zabbix/script/fun_check_stat_file.sh
 
