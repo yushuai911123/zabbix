@@ -12,11 +12,11 @@ EOF
 }
 
 is_path() {
-    [ x"${zabbixpath}" = x"/app/zabbix" ] && return 0
+    [ x"${zabbixpath}" = x"/home/zabbix" ] && return 0
     return 1
 }
 
-is_path || { echo "Please follow the steps in the /app/zabbix directory."; exit 1; }
+is_path || { echo "Please follow the steps in the /home/zabbix directory."; exit 1; }
 
 check_ip() {
     IP=$1
@@ -91,7 +91,7 @@ chown -R zabbix.zabbix ${zabbixpath}
 chown -R zabbix.zabbix ${zabbix_agentd_path}
 
 echo "add zabbix cron ..."
-echo "*/1 * * * * /app/zabbix/zabbix_crontab.sh > /dev/null 2>&1 &" >> /var/spool/cron/root
+echo "*/1 * * * * /home/zabbix/zabbix_crontab.sh > /dev/null 2>&1 &" >> /var/spool/cron/root
 
 systemctl restart zabbix-agent.service
 systemctl enable zabbix-agent.service

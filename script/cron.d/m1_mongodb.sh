@@ -4,7 +4,7 @@
 
 gen_mongodb_status(){
     PORT="${1}"
-    LOG_FILE="/app/zabbix/var/mongodb${PORT}.stats"
+    LOG_FILE="/home/zabbix/var/mongodb${PORT}.stats"
     HOSTNAME="127.0.0.1";
 
 /app/mongodb-4.0.10/bin/mongo ${HOSTNAME}:${PORT} >${LOG_FILE} <<EOF
