@@ -2,13 +2,13 @@
 #usage:
 #sh mongodb_stats.sh <METRIC> <METHOD> <PORT>
 
-. /home/zabbix/script/fun_check_stat_file.sh
+. /srv/zabbix/script/fun_check_stat_file.sh
 
 METRIC="$1"
 METHOD="$2"
 HOSTNAME=127.0.0.1
 PORT="${3:-27017}"
-STAT_FILE="/home/zabbix/var/mongodb${PORT}.stats"
+STAT_FILE="/srv/zabbix/var/mongodb${PORT}.stats"
 CHECK_STAT_FILE_FLAG=`fun_check_stat_file ${STAT_FILE} 120`;
 
 if [ ${CHECK_STAT_FILE_FLAG} -ne 1 ] ;then

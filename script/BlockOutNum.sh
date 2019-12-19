@@ -1,14 +1,14 @@
 #!/bin/bash
 #监控区块链出块的脚本
-#nohup sh /home/zabbix/script/produce.sh >> /home/zabbix/var/BlockOutNum.stats &
+#nohup sh /srv/zabbix/script/produce.sh >> /srv/zabbix/var/BlockOutNum.stats &
 #TYPE: [discovery] | [name num|height1|height2]
 
 TYPE=$1
 C_NAME=$2
 NUM=$3
 
-. /home/zabbix/script/fun_check_stat_file.sh
-bon_file="/home/zabbix/var/BlockOutNum.stats"
+. /srv/zabbix/script/fun_check_stat_file.sh
+bon_file="/srv/zabbix/var/BlockOutNum.stats"
 
 is_process() {
     pronum=$(ps -ef|grep "produce.sh"|grep -v "grep"|wc -l)
@@ -16,7 +16,7 @@ is_process() {
     return 1
 }
 
-is_process || { echo "produce.sh没有运行，请先输入nohup sh /home/zabbix/script/produce.sh >> /home/zabbix/var/BlockOutNum.stats &命令运行监本。"; exit 1; }
+is_process || { echo "produce.sh没有运行，请先输入nohup sh /srv/zabbix/script/produce.sh >> /srv/zabbix/var/BlockOutNum.stats &命令运行监本。"; exit 1; }
 
 CHECK_STAT_FILE_FLAG=$(fun_check_stat_file ${bon_file} 120)
 
