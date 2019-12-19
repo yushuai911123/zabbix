@@ -123,7 +123,8 @@ else
     systemctl enable zabbix-agent.service
 fi
 
-systemctl restart zabbix-agent.service
+echo "restart zabbix-agent server."
 
+systemctl restart zabbix-agent.service
 
 echo "done zabbix-agent env setup."
